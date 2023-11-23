@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            /* background-image: url('back.jpg'); */ /* Uncomment this line if you want to use a background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: "";
+             background-image: url('back.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(5px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .image-container {
+            margin-top: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .location-image {
+            width: 360px;
+            height: auto;
+            margin: 35px;
+            cursor: pointer;
+        }
+        h1 {
+            margin-left: 650px;
+        }
+
+        .location-image {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+            filter: grayscale(0%);
+            transform: scale(1);
+        }
+
+        .location-image:hover {
+            transform: scale(1.1);
+            filter: grayscale(100%);
+        }
+
+        .location-count {
+            font-weight: bold;
+            color: azure;
+        }
+    </style>
+</head>
+<body>
+    <h1>Places</h1>
+    <div class="image-container">
+        <div class="location-wrapper">
+            <img class="location-image" src="https://www.bennett.edu.in/wp-content/uploads/2022/04/Indoor-Badminton-Court.jpg" alt="Location 1" onclick="openQRCode('Sports Complex', 'Location1-count')">
+            <p class="location-count" id="Location1-count">Scanned 0 times</p>
+        </div>
+        <div class="location-wrapper">
+            <img class="location-image" src="https://www.bennett.edu.in/wp-content/uploads/2021/07/Cafeteria-1.jpg" alt="Location 2" onclick="openQRCode('Library', 'Location2-count')">
+            <p class="location-count" id="Location2-count">Scanned 0 times</p>
+        </div>
+        <div class="location-wrapper">
+            <img class="location-image" src="https://www.bennett.edu.in/wp-content/uploads/2022/04/Students-enjoy-meal-inside-cafeteria.jpg" alt="Location 3" onclick="openQRCode('Mess', 'Location3-count')">
+            <p class="location-count" id="Location3-count">Scanned 0 times</p>
+        </div>
+        <div class="location-wrapper">
+            <img class="location-image" src="https://www.bennett.edu.in/wp-content/uploads/2021/07/Central-Library-1.jpg" alt="Location 4" onclick="openQRCode('M Block Mess', 'Location4-count')">
+            <p class="location-count" id="Location4-count">Scanned 0 times</p>
+        </div>
+    </div>
+
+    <script>
+        function openQRCode(locationName, countElementId) {
+            var url = '';
+
+            switch (locationName) {
+                case 'Sports Complex':
+                    url = 'https://rohandabas.github.io/personal_portfolio/';
+                    break;
+                case 'Library':
+                    url = 'https://library.com/library';
+                    break;
+                case 'Mess':
+                    url = 'https://mess.com/mess';
+                    break;
+                case 'M Block Mess':
+                    url = 'https://m-block.com/m-block-mess';
+                    break;
+                default:
+                    url = '';
+            }
+
+            if (url !== '') {
+                var newWindow = window.open('', '_blank');
+                newWindow.document.write('<style>body { background-color: #000000; }</style>');
+                newWindow.document.write('<div style="display: flex; align-items: center;">');
+                newWindow.document.write('<img src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=' + encodeURIComponent(url) + '">');
+                newWindow.document.write('<p style="margin-left: 50px; color: #FFFFFF; margin-bottom: 20px; font-size: 80px; white-space: nowrap;"><u>Scan The QR Code</u></p>');
+                newWindow.document.write('</div>');
+                newWindow.document.title = 'QR Code for ' + locationName;
+
+                // Increment and display the scan count
+                var currentCount = incrementScanCount(countElementId);
+                if (currentCount === 2) {
+                    alert('Go eat!');
+                }
+            }
+        }
+
+        function incrementScanCount(countElementId) {
+            var countElement = document.getElementById(countElementId);
+            if (countElement) {
+                var countText = countElement.innerHTML;
+                var currentCount = parseInt(countText.match(/\d+/)[0]) + 1;
+                countElement.innerHTML = "Scanned " + currentCount + " times";
+                return currentCount;
+            }
+        }
+    </script>
+</body>
+</html>

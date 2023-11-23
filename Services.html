@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #214F4B;
+        }
+
+        /* Style for buttons */
+        .btn1,
+        .btn2,
+        .btn3,
+        .btn4 {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #7CB9B4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn1 button,
+        .btn2 button,
+        .btn3 button,
+        .btn4 button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn1 button:hover,
+        .btn2 button:hover,
+        .btn3 button:hover,
+        .btn4 button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional style for "Request Sent" state */
+        .request-sent {
+            background-color: green !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn1">
+        <p class="bt1">Make request for mess:</p>
+        <button type="button1" onclick="changeText(this)">Make REQUEST</button>
+    </div>
+    <div class="btn2">
+        <p class="bt2">Make request for sports complex:</p>
+        <button type="button1" onclick="changeText(this)">Make REQUEST</button>
+    </div>
+    <div class="btn3">
+        <p class="bt3">Make request for library:</p>
+        <button type="button1" onclick="changeText(this)">Make REQUEST</button>
+    </div>
+    <div class="btn4">
+        <p class="bt">Make request for M-block:</p>
+        <button type="button1" onclick="changeText(this)">Make REQUEST</button>
+    </div>
+    
+    <script>
+        function changeText(btn) {
+            btn.innerHTML = 'Request Sent';
+            btn.style.backgroundColor = 'green';
+            btn.disabled = true; // Optionally disable the button after click
+
+            setTimeout(function() {
+                btn.innerHTML = 'Make REQUEST';
+                btn.style.backgroundColor = '#007bff';
+                btn.disabled = false; // Enable the button again
+                alert('TRY again later'); // Show alert/notification after 1 minute
+            }, 60000); // 1 minute (60000 milliseconds)
+        }
+    </script>
+</body>
+</html>

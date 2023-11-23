@@ -1,0 +1,23 @@
+<div class="container">
+        <!-- Photo containers with links -->
+        <div class="photo-container">
+            <a href="spqr.html" class="photo-link"> <!-- Replace "link1.html" with the actual URL -->
+                <img src="https://www.bennett.edu.in/wp-content/uploads/2022/04/Indoor-Badminton-Court.jpg" alt="Photo 1">
+            </a>
+        </div>
+        <div class="photo-container">
+            <a href="mbqr.html" class="photo-link"> <!-- Replace "link2.html" with the actual URL -->
+                <img src="https://www.bennett.edu.in/wp-content/uploads/2021/07/Cafeteria-1.jpg" alt="Photo 2">
+            </a>
+        </div>
+        <div class="photo-container">
+            <a href="messqr.html" class="photo-link"> <!-- Replace "link3.html" with the actual URL -->
+                <img src="https://www.bennett.edu.in/wp-content/uploads/2022/04/Students-enjoy-meal-inside-cafeteria.jpg" alt="Photo 3">
+            </a>
+        </div>
+        <div class="photo-container">
+            <a href="libqr" class="photo-link"> <!-- Replace "link4.html" with the actual URL -->
+                <img src="https://www.bennett.edu.in/wp-content/uploads/2021/07/Central-Library-1.jpg" alt="Photo 4">
+            </a>
+        </div>
+    </div>

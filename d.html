@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hlo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(https://www.bennett.edu.in/wp-content/uploads/2021/07/A-Block-Administrative-block.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Graph container */
+        .graph-container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Glassmorphism box styling */
+        .glassmorphism-box {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .students-counts {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .students-counts p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .students-counts span {
+            font-weight: bold;
+            color: #007bff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="places.html">Places</a>
+        <a href="Services.html">Services</a>
+        <a href="#">Contact Us</a>
+        <a href="#" class="login-link">Login</a>
+    </nav>
+    <div class="content">
+        <div class="graph-container">
+            <canvas id="studentGraph" width="300" height="300"></canvas>
+        </div>
+        <div class="glassmorphism-box">
+            <p class="box-text">This is our website which helps to save our time.</p>
+
+            <div class="students-counts">
+                <p>Current students in mess is <span id="messStudents">0</span></p>
+                <p>Current students in M-block mess is <span id="mBlockStudents">0</span></p>
+                <p>Current students in library is <span id="libraryStudents">0</span></p>
+                <p>Current students in sports-block is <span id="sportsBlockStudents">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulated counts (manually updating for demonstration)
+        let messCount = 25;
+        let mBlockCount = 30;
+        let libraryCount = 20;
+        let sportsBlockCount = 15;
+
+        // Update student counts
+        function updateCounts() {
+            document.getElementById('messStudents').innerText = messCount;
+            document.getElementById('mBlockStudents').innerText = mBlockCount;
+            document.getElementById('libraryStudents').innerText = libraryCount;
+            document.getElementById('sportsBlockStudents').innerText = sportsBlockCount;
+
+            // Update the graph based on the counts
+            updateGraph();
+        }
+
+        // Update the graph based on student counts
+        function updateGraph() {
+            const canvas = document.getElementById('studentGraph');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const counts = [messCount, mBlockCount, libraryCount, sportsBlockCount];
+            const colors = ['#007bff', '#ff7f0e', '#2ca02c', '#d62728'];
+            const barWidth = 50;
+            const gap = 30;
+            let x = 20;
+
+            for (let i = 0; i < counts.length; i++) {
+                ctx.fillStyle = colors[i];
+                const barHeight = counts[i] * 2;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                x += barWidth + gap;
+            }
+        }
+
+        // Simulated increase in counts (for demonstration)
+        setInterval(() => {
+            messCount += 5;
+            mBlockCount += 5;
+            libraryCount += 5;
+            sportsBlockCount += 5;
+
+            updateCounts(); // Update the counts and graph
+        }, 3000); // Simulate counts updated every 3 seconds (adjust as needed)
+    </script>
+</body>
+</html>
